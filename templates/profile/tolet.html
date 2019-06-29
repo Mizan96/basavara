@@ -1,0 +1,58 @@
+<!-- Editable table -->
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">বাড়ি-ভাড়ার বিজ্ঞাপন দিন</h3>
+  <div class="card-body">
+    {% if tolets %}
+    <div id="table" class="table-editable">
+        <span class="table-add float-right mb-3 mr-2"><a href="{% url 'postTolet' %}" class="text-success"><i class="fa fa-plus fa-2x"
+              aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">তারিখ</th>
+          <th class="text-center">চলমান</th>
+          <th class="text-center">পূর্বে</th>
+          <th class="text-center">শহর</th>
+          <th class="text-center">এলাকা</th>
+          <th class="text-center">পরিবর্তন</th>
+          <th class="text-center">অপসারণ</th>
+        </tr>
+        {% for tolet in tolets %}
+        <tr>
+          <td class="pt-3-half" contenteditable="true">{{ tolet.timestamp.date }}</td>
+          <td class="pt-3-half">
+            <span class="table-down"><a href="{% url 'toletOpen' tolet.id %}" 
+              {% if tolet.open %}
+              class="green-text">
+              {% else %}
+              class="red-text">
+              {% endif %}
+              
+              <i class="fa fa-check-square-o" aria-hidden="true"></i></a></span>
+          </td>
+          <td class="pt-3-half" contenteditable="true">{{ tolet.timestamp | timesince }}</td>
+          <td class="pt-3-half" contenteditable="true">{{ tolet.city }}</td>
+          <td class="pt-3-half" contenteditable="true">{{ tolet.area }}</td>
+          <td class="pt-3-half">
+            <span class="table-down"><a href="{% url 'postToletEdit' tolet.id %}" class="indigo-text"><i class="fa fa-pencil"
+                  aria-hidden="true"></i></a></span>
+          </td>
+          <td>
+            <a href="{% url 'deleteTolet' tolet.id %}"><span class="table-remove"><button type="button" class="btn btn-danger btn-rounded btn-sm my-0">Remove</button></span></a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+    <div id="table" class="table-editable">
+    <span class="table-add float-right mb-3 mr-2"><a href="{% url 'postTolet' %}" class="text-success"><i class="fa fa-plus fa-2x"
+      aria-hidden="true"></i></a></span>
+      <table class="table table-bordered table-responsive-md table-striped text-center"></table>
+    </div>
+    <div class="alert alert-primary" role="alert">
+      আপনার এখনও কোন বিজ্ঞাপন নেই!
+    </div>
+    {% endif %}
+  </div>
+</div>
+<!-- Editable table -->

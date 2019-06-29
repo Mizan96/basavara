@@ -1,0 +1,131 @@
+{% extends "common/base.html" %}
+
+{% block header %}
+{% include "common/header.html" %}
+{% endblock %}
+
+{% block body %}
+<!-- {% if ok %} -->
+<div class="alert alert-success alert-dismissible fade show container mt-2" role="alert">
+    <strong>আপনার বিজ্ঞাপন সম্পন্ন হয়েছে</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<!-- {% endif %} -->
+<div class="container my-2 border border-light">
+    <!-- Extended default form grid -->
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Grid row -->
+        <hr>
+        <div class="form-row">
+            <!-- Default input -->
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">শহর</label>
+                {{ form.city }}
+                <small class="form-text text-muted mb-4 text-success">
+                    # যে কোন একটি শহর নির্বাচন করুন
+                </small>
+            </div>
+            <!-- Default input -->
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">এলাকা</label>
+                {{ form.area }}
+                <small class="form-text text-muted mb-4 text-success">
+                    # যে কোন একটি এলাকা নির্বাচন করুন
+                </small>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputEmail4">ভাড়া</label>
+                {{ form.price }}
+                <small class="form-text text-muted mb-4 text-success">
+                    যেমনঃ <br> # ১২০০০, <br> # ৮০০০ <br>ইত্যাদি
+                </small>
+            </div>
+            <!-- Default input -->
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">মোবাইল নাম্বার</label>
+                {{ form.mobile }}
+                <small class="form-text text-muted mb-4 text-success">
+                    যেমনঃ <br> # ০১৭১......,<br> # ০১৮১...... <br>ইত্যাদি
+                </small>
+            </div>
+        </div>
+        <!-- Grid row -->
+        <hr>
+        <!-- Default input -->
+        <div class="form-group">
+            <label for="inputAddress">
+                বিবরণ</label>
+            <small class="form-text text-muted mb-4 text-success">
+                যেমনঃ <br> # দুই রুম, একটা রান্না ঘর...<br> # শুধুমাত্র পরিবারের জন্য... <br> ইত্যাদি
+            </small>
+            {{ form.description }}
+        </div>
+        <hr>
+        <!-- Default input -->
+        <div class="form-group">
+            <label for="inputAddress2">
+                ঠিকানা</label>
+            <small class="form-text text-muted mb-4 text-success">
+                যেমনঃ <br> # ২২৫/১২ মধ্য-আউচপারা, নিশাতনগর...... <br> # গুগল ম্যাপ এর এম্বেড লিংক দিতে পারেন 
+                <br> ইত্যাদি
+            </small>
+            {{ form.address }}
+        </div>
+        <hr>
+        <!-- Grid row -->
+        <div class="form-row">
+            <!-- Default input -->
+            <div class="form-group">
+                {% if form.image1 %}
+                {{ form.image1.url }}
+                {% endif %}
+                <br>
+                ইমেজ-১
+                {{ form.image1 }}
+            </div>
+        </div>
+        <hr>
+        <div class="form-row">
+            <!-- Default input -->
+            <div class="form-group">
+                {% if form.image2 %}
+                {{ form.image2.url }}
+                {% endif %}
+                <br>
+                ইমেজ-২
+                {{ form.image2 }}
+            </div>
+        </div>
+        <hr>
+        <div class="form-row">
+            <!-- Default input -->
+            <div class="form-group">
+                {% if form.image3 %}
+                {{ form.image3.url }}
+                {% endif %}
+                <br>
+                ইমেজ-৩
+                {{ form.image3 }}
+            </div>
+            <hr>
+
+        </div>
+        <hr>
+        <!-- Default unchecked -->
+        <div class="custom-control custom-checkbox">
+            {{ form.open }} চলমান
+        </div>
+        <hr>
+        <!-- Grid row -->
+        <button type="submit" class="btn btn-primary btn-md">জমা দিন</button>
+    </form>
+    <!-- Extended default form grid -->
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include "common/footer.html" %}
+{% endblock %}

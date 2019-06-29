@@ -1,0 +1,75 @@
+{% extends "common/base.html" %}
+
+{% block header %}
+{% include "common/header.html" %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 my-2 mx-auto">
+            <!-- Material form login -->
+            <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>সাইন-ইন</strong>
+                </h5>
+
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" method="POST">
+                        {% csrf_token %}
+
+                        <!-- Username -->
+                        <div class="md-form">
+                            {{ login.username }}
+                            <label for="materialLoginFormEmail">
+                                ব্যবহারকারীর নাম</label>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="md-form">
+                            {{ login.password }}
+                            <label for="materialLoginFormPassword">
+                                পাসওয়ার্ড</label>
+                        </div>
+
+                        <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4 text-danger">
+                            {{ error }}
+                        </small>
+
+                        <div class="d-flex justify-content-around">
+                            <div>
+                                <!-- Forgot password -->
+                                <a href="{% url 'password_reset' %}">পাসওয়ার্ড ভুলে গেছেন?</a>
+                            </div>
+                        </div>
+
+                        <!-- Sign in button -->
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
+                            সাইন-ইন
+                        </button>
+
+                        <!-- Register -->
+                        <p>
+                            সদস্য না?
+                            <a href="{% url 'signup' %}">
+                                নিবন্ধন করুন</a>
+                        </p>
+                    </form>
+                    <!-- Form -->
+
+                </div>
+
+            </div>
+            <!-- Material form login -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include "common/footer.html" %}
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "common/base.html" %}
+
+{% block header %}
+{% include "common/header.html" %}
+{% endblock %}
+
+{% block body %}
+{% include "common/slider.html" %}
+
+<div class="container">
+    <!-- News jumbotron -->
+    <div class="jumbotron text-center hoverable p-4">
+
+        <!-- Grid row -->
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                <!-- Excerpt -->
+                <a href="#!" class="green-text">
+                    <h6 class="h6 pb-1">অবস্থান: <i class="fa fa-map-marker pr-2"></i>{{ obj.city }},{{ obj.area }}</h6>
+                </a>
+
+                <h4 class="h4 mb-4">ভাড়া: &#2547;{{ obj.price }}</h4>
+                <h5 class="h5 mb-5">মোবাইল নাম্বার: {{ obj.mobile }}</h5>
+                <hr>
+                <h4>
+                    বিবরণ:</h4>
+                <p class="font-weight-normal">
+                    {{ obj.description }}
+                </p>
+                <hr>
+                <h4>ঠিকানা: </h4>
+                <p class="font-weight-normal">{{ obj.address | safe }}</p>
+                <hr>
+                <p class="font-weight-normal"><a><strong>{{ obj.user.get_full_name }}
+                        </strong></a> - {{ obj.timestamp |timesince }} পূর্বে দিয়েছেন</p>
+            </div>
+            <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+
+    </div>
+    <!-- News jumbotron -->
+</div>
+
+
+<div class="container">
+        <div class="jumbotron text-center hoverable p-4">
+            <!-- Material column sizing form -->
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>বিজ্ঞাপন দাতাকে ইন-বক্স করতে এখানে লিখুন</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <!-- Grid row -->
+                <div class="form-row">
+                    <!-- Grid column -->
+                    <div class="col-9">
+                        <!-- Material input -->
+                        <div class="md-form">
+                            <input type="text" name="message" class="form-control" placeholder="আপনার বার্তা লিখুন">
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <button type="submit" class="btn btn-primary">জমা দিন</button>
+                    </div>
+                    <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+            </form>
+            <!-- Material column sizing form -->
+        </div>
+    </div>
+
+<div class="container">
+    <div class="jumbotron text-center hoverable p-4">
+        <!-- Material column sizing form -->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>যদি আরও কিছু জানতে মন্তব্য করুন</strong> 
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <!-- Grid row -->
+            <div class="form-row">
+                <!-- Grid column -->
+                <div class="col-9">
+                    <!-- Material input -->
+                    <div class="md-form">
+                        <input type="text" name="comment" class="form-control" placeholder="আপনার মন্তব্য লিখুন">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary">জমা দিন</button>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </form>
+        <!-- Material column sizing form -->
+
+        {% for comment in comments %}
+        <div class="alert alert-success" role="alert">
+            <p class="text-md-left">{{ comment.comment }}</p>
+            <hr>
+            <p class="mb-0 text-md-left">{{ comment.timestamp | timesince }} পূর্বে </p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{% include "common/footer.html" %}
+{% endblock %}

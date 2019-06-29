@@ -1,0 +1,37 @@
+<!-- Card -->
+<div class="card mx-xl-5">
+
+        <!-- Card body -->
+        <div class="card-body">
+    
+            <!-- Default form subscription -->
+            <form method="POST">
+                {% csrf_token %}
+                <p class="h4 text-center py-4">প্রোফাইল পরিবর্তন</p>
+    
+                <!-- Default input name -->
+                <label for="defaultFormCardNameEx" class="grey-text font-weight-light">নামের প্রথম অংশ</label>
+                {{ form.first_name }}
+    
+                <br>
+    
+                <!-- Default input email -->
+                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light">নামের শেষাংশ</label>
+                {{ form.last_name }}
+
+                <br>
+                <!-- Default input email -->
+                <label for="defaultFormCardEmailEx" class="grey-text font-weight-light"> ই-মেইল</label>
+                {{ form.email }}
+    
+                <div class="text-center py-4 mt-3">
+                    <button class="btn btn-outline-purple" type="submit">জমা দিন<i class="fa fa-paper-plane-o ml-2"></i></button>
+                </div>
+            </form>
+            <!-- Default form subscription -->
+    
+        </div>
+        <!-- Card body -->
+    
+    </div>
+    <!-- Card -->

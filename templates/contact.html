@@ -1,0 +1,138 @@
+{% extends "common/base.html" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block header %}
+{% include "common/header.html" %}
+{% endblock %}
+
+{% block body %}
+<style>
+    .map-container-section {
+        overflow: hidden;
+        padding-bottom: 56.25%;
+        position: relative;
+        height: 0;
+    }
+
+    .map-container-section iframe {
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 my-2 mx-auto">
+            <!--Section: Contact v.2-->
+            <section class="mb-4">
+
+                <!--Section heading-->
+                <h2 class="h1-responsive font-weight-bold text-center my-4">আমাদের সাথে যোগাযোগ করুন</h2>
+                <!--Section description-->
+                <p class="text-center w-responsive mx-auto mb-5">
+                    আপনি কি কিছু জানতে চান? সরাসরি আমাদের সাথে যোগাযোগ করতে দ্বিধা করবেন না আমাদের দল আপনার কাছে ফিরে
+                    আসবে।
+                </p>
+                <div class="row">
+
+                    <!--Grid column-->
+                    <div class="col-md-9 mb-md-0 mb-5">
+                        <form id="contact-form" name="contact-form" method="POST">
+                            {% csrf_token %}
+                            <!--Grid row-->
+                            <div class="row">
+
+                                <!--Grid column-->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        {{ contact.name }}
+                                        <label for="name" class="">আপনার নাম</label>
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+
+                                <!--Grid column-->
+                                <div class="col-md-6">
+                                    <div class="md-form mb-0">
+                                        {{ contact.email }}
+                                        <label for="email" class="">আপনার ই-মেইল</label>
+                                    </div>
+                                </div>
+                                <!--Grid column-->
+
+                            </div>
+                            <!--Grid row-->
+
+                            <!--Grid row-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="md-form mb-0">
+                                        {{ contact.subject }}
+                                        <label for="subject" class="">বিষয়</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Grid row-->
+
+                            <!--Grid row-->
+                            <div class="row">
+
+                                <!--Grid column-->
+                                <div class="col-md-12">
+
+                                    <div class="md-form">
+                                        {{ contact.message }}
+                                        <label for="message">আপনার বার্তা</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!--Grid row-->
+
+                        </form>
+
+                        <div class="text-center text-md-left">
+                            <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">জামা
+                                দিন</a>
+                        </div>
+                        <div class="status"></div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-3 text-center">
+                        <ul class="list-unstyled mb-0">
+                            <li><i class="fa fa-map-marker fa-2x"></i>
+                                <p>পটুয়াখালী, বরিশাল, বাংলাদেশ</p>
+                            </li>
+
+                            <li><i class="fa fa-phone mt-4 fa-2x"></i>
+                                <p>০১৮৩২৮৫২৭৯১</p>
+                            </li>
+
+                            <li><i class="fa fa-envelope mt-4 fa-2x"></i>
+                                <p> যোগাযোগ @barivara.com</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+
+            </section>
+            <!--Section: Contact v.2-->
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include "common/footer.html" %}
+{% endblock %}

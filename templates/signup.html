@@ -1,0 +1,109 @@
+{% extends "common/base.html" %}
+
+{% block header %}
+{% include "common/header.html" %}
+{% endblock %}
+
+{% block body %}
+<style>
+    li {
+        list-style: none;
+    }
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 my-2 mx-auto">
+            <!-- Material form register -->
+            <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                    <strong>সাইন-আপ</strong>
+                </h5>
+
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+
+                    <!-- Form -->
+                    <form class="text-center" style="color: #757575;" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="col">
+                                <!-- First name -->
+                                <div class="md-form">
+                                    {{ signup.first_name }}
+                                    <label for="materialRegisterFormFirstName">নামের প্রথম অংশ</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <!-- Last name -->
+                                <div class="md-form">
+                                    {{ signup.last_name }}
+                                    <label for="materialRegisterFormLastName">নামের শেষাংশ</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- User-name -->
+                        <div class="md-form mt-0">
+                            {{ signup.username }}
+                            <label for="materialRegisterFormEmail">
+                                ব্যবহারকারীর নাম</label>
+                            <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4 text-danger">
+                                {{ signup.username.errors }}
+                            </small>
+                        </div>
+
+                        <!-- E-mail -->
+                        <div class="md-form mt-0">
+                            {{ signup.email }}
+                            <label for="materialRegisterFormEmail">
+                                ই-মেইল</label>
+                            <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4 text-danger">
+                                {{ signup.email.errors }}
+                            </small>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="md-form">
+                            {{ signup.password }}
+                            <label for="materialRegisterFormPassword">পাসওয়ার্ড</label>
+                        </div>
+
+                        <!-- Confirm Password -->
+                        <div class="md-form">
+                            {{ signup.confirm_password }}
+                            <label for="materialRegisterFormPassword">পাসওয়ার্ড নিশ্চিত করুন</label>
+                            <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4 text-danger">
+                                {{ signup.confirm_password.errors }}
+                            </small>
+                        </div>
+
+                        <!-- Sign up button -->
+                        <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
+                            সাইন-আপ
+                        </button>
+                        <hr>
+
+                        <!-- Terms of service -->
+                        <p>
+
+                            <em>সাইন-আপ</em>..ক্লিক করে আপনি আমাদের
+                            <a href="" target="_blank">পরিষেবার শর্তাবলীতে </a>সম্মত হন
+
+                    </form>
+                    <!-- Form -->
+
+                </div>
+
+            </div>
+            <!-- Material form register -->
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+{% include "common/footer.html" %}
+{% endblock %}
